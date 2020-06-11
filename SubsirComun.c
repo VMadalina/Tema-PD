@@ -38,18 +38,18 @@ int main()
     fscanf(fin, "%d %d", &na, &nb);
 
 
-    int *A = (int *) malloc (na * sizeof(int));
+    int *A = (int *) malloc ( (na + 1) * sizeof(int));
     for (int i = 1; i <= na; i++)
         fscanf(fin, "%d", &A[i]);
 
-    int *B = (int *) malloc (nb * sizeof(int));
+    int *B = (int *) malloc ( (nb + 1) * sizeof(int));
     for (int i = 1; i <= nb; i++)
         fscanf(fin, "%d", &B[i]);
 
 
-    int **M = (int **) malloc( (na+1) * sizeof(int *));
+    int **M = (int **) malloc( (na + 1) * sizeof(int *));
     for (int i = 0; i <= na; i++)
-        M[i] = (int *) malloc( (nb+1) * sizeof(int));
+        M[i] = (int *) malloc( (nb + 1) * sizeof(int));
 
     fprintf(fout, "%d\n", SubCom(M, A, B, na, nb)); //afisam nr de elemente ale subsirului
 
