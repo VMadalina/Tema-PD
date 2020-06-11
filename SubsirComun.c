@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/**
-Se dau doua siruri A si B, cu na si nb elemente. Sa se determine un
-subsir al lor comun, de lungime maxima.
-*/
+
 //returnez maximul intre doua numere
 int max (int a, int b)
 {
@@ -29,12 +26,7 @@ int SubCom (int** M, int* A, int* B, int na, int nb)
                 M[i][j] = max(M[i-1][j], M[i][j-1]);
         }
     }
-    for (int i = 0; i <= na; i++)
-    {
-        for (int j = 0; j <= nb; j++)
-            printf( "%d ", M[i][j]);
-        printf("\n");
-    }
+
     return M[na][nb];
 }
 
@@ -45,6 +37,7 @@ int main()
     int na, nb;
     fscanf(fin, "%d %d", &na, &nb);
 
+
     int *A = (int *) malloc (na * sizeof(int));
     for (int i = 1; i <= na; i++)
         fscanf(fin, "%d", &A[i]);
@@ -53,17 +46,10 @@ int main()
     for (int i = 1; i <= nb; i++)
         fscanf(fin, "%d", &B[i]);
 
-    for (int i=1;i<=na;i++)
-        printf("%d ",A[i]);
-    printf("\n");
 
-    for (int i=1;i<=nb;i++)
-        printf("%d ",B[i]);
-    printf("\n");
-
-    int **M = (int **) malloc( na * sizeof(int *));
+    int **M = (int **) malloc( (na+1) * sizeof(int *));
     for (int i = 0; i <= na; i++)
-        M[i] = (int *) malloc( nb * sizeof(int));
+        M[i] = (int *) malloc( (nb+1) * sizeof(int));
 
     fprintf(fout, "%d\n", SubCom(M, A, B, na, nb)); //afisam nr de elemente ale subsirului
 
